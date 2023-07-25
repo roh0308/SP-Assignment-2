@@ -63,6 +63,9 @@ void printlast_n(){
     printf("%s\n", current->data);
     current = current->next;
   }
+  if (current != NULL) {
+    printf("%s\n", current->data);
+  }
 }
 
 int main(int argc,char *argv[])

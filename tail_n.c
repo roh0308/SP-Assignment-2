@@ -8,9 +8,9 @@ struct line{
 struct line* head=NULL;
 struct line* tail=NULL;
 
-int n=10;
+int n=3;
 void push(char* data){
-    struct line* newline=malloc(sizeof(struct line));
+    /*struct line* newline=malloc(sizeof(struct line));
     newline->data=data;
     newline->next=NULL;
     if(head==NULL){
@@ -21,6 +21,18 @@ void push(char* data){
     {
         tail->next=newline;
         tail=newline;
+    }*/
+    struct line* newline = malloc(sizeof(struct line));
+    newline->data = malloc(strlen(data) + 1); // Allocate memory for the string
+    strcpy(newline->data, data); // Copy the data into the allocated memory
+    newline->next = NULL;
+
+    if (head == NULL) {
+        head = newline;
+        tail = newline;
+    } else {
+        tail->next = newline;
+        tail = newline;
     }
 }
 void pop() {
@@ -49,11 +61,6 @@ void printlast_n(){
 
 int main(int argc,char *argv[])
 {
-    if(argc>2)
-    {
-        printf("Usage: tail [-n <number of lines>]\n");
-        return 1;
-    }
     if(argc==2){
         n=atoi(argv[1]);
     }

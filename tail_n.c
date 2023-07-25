@@ -59,12 +59,33 @@ void free_list() {
 void printlast_n(){
   struct line *current=head;
   int i;
-  for(i=0;i<n;i++){
+  /*for(i=0;i<n;i++){
     if(current==NULL){
       break;
     }
     printf("%s\n", current->data);
     current=current->next;
+  }*/
+  //printf("Demo\n");
+  int counter =0;
+  while(current!= NULL)
+  {
+
+      //printf("%s\n",current->data);
+      current=current->next;
+      counter++;
+  }
+  struct line* newNode = head;
+  while(counter != n)
+  {
+      newNode = newNode->next;
+      counter--;
+  }
+  while(newNode!= NULL)
+  {
+
+      printf("%s\n",newNode->data);
+      newNode=newNode->next;
   }
 }
 

@@ -69,4 +69,10 @@ int main(int argc,char *argv[])
         push(line);
     }
     printlast_n();
+    while (head != NULL) {
+        struct line *prevhead = head;
+        head = head->next;
+        free(prevhead->data);
+        free(prevhead);
+    }
 }

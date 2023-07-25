@@ -47,8 +47,17 @@ void pop() {
   free(prevhead->data);
   free(prevhead);
 }
+void free_list() {
+    struct line* current = head;
+    while (current != NULL) {
+        struct line* temp = current;
+        current = current->next;
+        free(temp->data);
+        free(temp);
+    }
+}
 void printlast_n(){
-  /*struct line *current=head;
+  struct line *current=head;
   int i;
   for(i=0;i<n;i++){
     if(current==NULL){
@@ -56,15 +65,6 @@ void printlast_n(){
     }
     printf("%s\n", current->data);
     current=current->next;
-  }*/
-  struct line *current = head;
-  int i;
-  for (i = 0; i < n && current != NULL; i++) {
-    printf("%s\n", current->data);
-    current = current->next;
-  }
-  if (current != NULL) {
-    printf("%s\n", current->data);
   }
 }
 
@@ -78,10 +78,5 @@ int main(int argc,char *argv[])
         push(line);
     }
     printlast_n();
-    while (head != NULL) {
-        struct line *prevhead = head;
-        head = head->next;
-        free(prevhead->data);
-        free(prevhead);
-    }
+    free_list();
 }

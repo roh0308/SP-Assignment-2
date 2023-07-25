@@ -48,7 +48,7 @@ void pop() {
   free(prevhead);
 }
 void printlast_n(){
-  struct line *current=head;
+  /*struct line *current=head;
   int i;
   for(i=0;i<n;i++){
     if(current==NULL){
@@ -56,6 +56,12 @@ void printlast_n(){
     }
     printf("%s\n", current->data);
     current=current->next;
+  }*/
+  struct line *current = head;
+  int i;
+  for (i = 0; i < n && current != NULL; i++) {
+    printf("%s\n", current->data);
+    current = current->next;
   }
 }
 

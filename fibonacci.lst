@@ -1,0 +1,28 @@
+     1                                 %line 1+1 fibonacci.asm
+     2                                 [segment .data]
+     3 00000000 0000000000000000       a dq 0
+     4 00000008 0100000000000000       b dq 1
+     5                                 [segment .text]
+     6                                 
+     7                                 [global main]
+     8                                 main:
+     9 00000000 55                     push rbp
+    10 00000001 4889E5                 mov rbp,rsp
+    11 00000004 4883EC10               sub rsp,16
+    12                                 
+    13 00000008 48C7C208000000         mov rdx,8
+    14 0000000F 48C7C000000000         mov rax,0
+    15 00000016 48C7C301000000         mov rbx,1
+    16 0000001D 48C7C101000000         mov rcx,1
+    17                                 
+    18                                 forloop:
+    19 00000024 4801D8                 add rax,rbx
+    20 00000027 4893                   xchg rax,rbx
+    21 00000029 48FFC1                 inc rcx
+    22 0000002C 4839D1                 cmp rcx,rdx
+    23 0000002F 75F1                   jnz forloop
+    24                                 
+    25                                 exit:
+    26 00000031 48C7C03C000000         mov rax,60
+    27 00000038 4831FF                 xor rdi,rdi
+    28 0000003B 0F05                   syscall

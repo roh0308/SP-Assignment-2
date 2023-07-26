@@ -1,0 +1,12 @@
+     1                                 %line 1+1 ASCII.asm
+     2                                 [segment .text]
+     3                                 [global main]
+     4                                 main:
+     5 00000000 48C7C008000000         mov rax,8
+     6 00000007 4883C030               add rax,48
+     7 0000000B 4889C2                 mov rdx,rax
+     8                                 
+     9                                 Exit:
+    10 0000000E 48C7C001000000         mov rax,1
+    11 00000015 4831DB                 xor rbx,rbx
+    12 00000018 CD80                   int 0x80
